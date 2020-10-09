@@ -1,0 +1,85 @@
+
+<body  body onload="document.calcular.termos.focus()">
+  
+  <nav class="navbar fixed-top navbar-light bg-light" style="background-image: linear-gradient(to right, #ff9966 ,#ff5e62);">
+    <a></a>
+    <a class="navbar-brand" href="/users/logout" style="color: white;">Sair</a>
+  </nav>
+
+    <div class="content">      
+        
+        <div id="fibonacci">
+            <form name="calcular" action="#" onsubmit="return Gerar()">
+            <h1>Sequencia Fibonacci</h1> 
+            <p> 
+              <br>
+              <label class="valor" for="Valor">Insira um valor</label>
+              <input  name="termos" required="required" type="number"  placeholder="1 a 20" min="1" max="20"/>
+             <button type="button" class="btn btn-danger" onclick="fibonacci()" value="Calcular">Calcular</button>  
+             <hr size="10" color="red">       
+              <textarea class="areaText" name="resultado" cols="120" rows="5" readonly="readonly">Resultado</textarea>                   
+            </form>
+            </p>
+       </div>
+         
+            
+                <h2>O que é?</h2>
+                
+                <p>Sequência de Fibonacci é a sequência numérica proposta pelo matemático <em>Leonardo Pisa</em>, mais conhecido como Fibonacci:
+                <br><br>
+                <strong  style="border-bottom: 1px solid black;"> 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</strong>
+                <br><br>
+                Foi a partir de um problema criado por ele que o mesmo detectou a existência de uma regularidade matemática.     
+                Trata-se do exemplo clássico dos coelhos, em que Fibonacci descreve o crescimento de uma população desses animais.<br>
+                A sequência é definida mediante a seguinte fórmula:
+                <br><br>
+               <strong  style="border-bottom: 1px solid black;">Fn = Fn - 1 + Fn - 2</strong></p>
+            
+               <h2>Retângulo de Ouro</h2> 
+               
+                <p>A partir dessa sequência, pode ser construído um retângulo, que é chamado de Retângulo de Ouro.<br>
+                A verdade é que a sequência de Fibonacci pode ser percebida na natureza. São exemplos disso as folhas das árvores, 
+                as pétalas das rosas, os frutos como o abacaxi, as conchas espiraladas dos caracóis ou as galáxias.<br>
+                Muito interessante é o fato de que através do coeficiente de um número com o seu antecessor, obtém-se a 
+                constante com o valor aproximado de 1,618.<br>
+                Ela é aplicada em análises financeiras e na informática e foi utilizada por <em>Da Vinci</em>, que chamou a sequência 
+                de <em>Divina Proporção</em>, para fazer desenhos perfeitos.</p>
+
+                <footer class="page-footer font-small blue">      
+                  <div class="footer-copyright text-center py-3">Feito com <strong class="coração">&#10084;</strong> por 
+                    <a class="gitHub" href="https://github.com/brunesp">Bruna Espindola</a>   
+                       
+    </div>
+    <script >
+        
+        function Gerar() {
+    var k = document.calcular.termos.value;
+    var penultimo = 0;
+    var ultimo = 1;
+
+    document.calcular.resultado.value = "";
+    resultado = "";
+
+    if (isNaN(k) || k.indexOf(".") > -1) {
+      alert("Numero invalido.");
+      document.calcular.termos.value = "";
+      return false;
+    }
+
+    resultado += "1, ";  
+
+    for (i = 2; i <= k; i++) {
+      termo = penultimo + ultimo;
+      resultado += termo + ", ";
+      penultimo = ultimo;
+      ultimo = termo;   
+    }
+
+    resultado = resultado.substring(0, resultado.length - 2);  
+    document.calcular.resultado.value = resultado;
+    document.calcular.termos.value = "";
+    return false;
+  }
+    
+    </script>
+</body>
